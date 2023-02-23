@@ -1,0 +1,250 @@
+@import url('https://fonts.googleapis.com/css2?family=Hanken+Grotesk&display=swap');
+
+$colors: #ff8b64,
+#55c2e6,
+#ff5e7d,
+#ff8b64,
+#f1c75b,
+#55c2e6,
+#f1c75b,
+#7335d2,
+#4bcf82,
+#7335d2;
+
+*,
+body {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-family: 'Hanken Grotesk', sans-serif;
+}
+
+body {
+    background: #0E1323;
+}
+%grid {
+    display: grid;
+    place-items: center;
+}
+.container {
+    @extend %grid;
+    height: 100vh;
+       @media only screen and (max-width: 768px) {
+        place-items: unset;
+    }
+}
+
+.row {
+    display: grid;
+    grid-template-columns: 255px 1fr;
+
+    @media only screen and (max-width: 768px) {
+        grid-template-columns: 1fr;
+    }
+}
+
+.griddy {
+    @extend %grid;
+
+    grid-template-columns: repeat(5, 1fr);
+    row-gap: 35px;
+    column-gap: 20px;
+    @media only screen and (max-width: 1440px) {
+        grid-template-columns: repeat(4, 1fr);
+    }
+    @media only screen and (max-width: 1250px) {
+        grid-template-columns: repeat(3, 1fr);
+    }
+    @media only screen and (max-width: 959px) {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    @media only screen and (max-width: 768px) {
+        grid-template-columns: repeat(1, 1fr);
+    }
+}
+
+
+@for $i from 1 through length($colors) {
+    .wrapper:nth-child(#{length($colors)}n+#{$i}) {
+        background: nth($colors, $i);
+        height: 255px;
+        padding: 37px 0 0;
+        border-radius: 15px;
+
+        @media only screen and (max-width: 768px) {
+            width: 80%;
+            height: auto;
+
+            &:last-child {
+                margin-bottom: 40px;
+            }
+
+            .InStore {
+                display: none;
+            }
+        }
+    }
+
+    .wrapper {
+        &_card {
+            border-radius: 15px;
+            color: white;
+            background: #1c204b;
+            position: relative;
+            margin-bottom: 15px;
+            height: 220px;
+            padding: 30px;
+
+            @media only screen and (max-width: 768px) {
+                margin-bottom: 0;
+                height: auto;
+                padding-block: 20px;
+            }
+
+            .row--title {
+                display: block;
+
+                @media only screen and (max-width: 768px) {
+                    display: flex;
+                    justify-content: space-between;
+                }
+            }
+
+            .row {
+                display: flex;
+                justify-content: space-between;
+
+                h2 {
+                    font-weight: 500;
+                    font-size: 18px;
+                    line-height: 21px;
+                    margin-bottom: 33px;
+                }
+
+                button{
+                    all: unset;
+                    margin-top: -33px;
+                    cursor: pointer;
+                }
+
+                .title {
+                    font-weight: 400;
+                    font-size: 12px;
+                    line-height: 14px;
+                    color: #bbc0ff;
+                    width: 133px;
+
+                    @media only screen and (max-width: 768px) {
+                        font-size: 10px;
+                        margin-top: 8px;
+                    }
+                }
+            }
+
+            h3 {
+                font-weight: 300;
+                font-size: 39px;
+                line-height: 46px;
+                margin-bottom: 14px;
+            }
+
+            p {
+                font-weight: 400;
+                font-size: 12px;
+                line-height: 14px;
+                margin-bottom: 0;
+            }
+        }
+    }
+}
+
+.main-card {
+    border-radius: 15px;
+    background: #1c204b;
+    width: 233px;
+    @media only screen and (max-width: 768px) {
+      width: 80%;
+      margin: 40px auto 30px;
+    }
+    .card--header {
+      padding: 33px 21px;
+      background: #5747ea;
+      border-radius: 15px;
+      @media only screen and (max-width: 768px) {
+        display: flex;
+        justify-content: flex-start;
+      }
+      .img_wrapper {
+        margin-bottom: 33px;
+        margin-right: 20px;
+        @media only screen and (max-width: 768px) {
+          margin-bottom: 5px;
+        }
+        img {
+          display: flex;
+          justify-content: space-between;
+          border-radius: 50%;
+          width: 138px;
+          height: 145px;
+          border: 3px solid #ffffff;
+          @media only screen and (max-width: 768px) {
+            width: 64px;
+            height: 64px;
+          }
+        }
+      }
+      span {
+        font-weight: 400;
+        font-size: 15px;
+        line-height: 18px;
+        color: #bbc0ff;
+        margin-bottom: 10px;
+        @media only screen and (max-width: 768px) {
+          font-weight: 400;
+          font-size: 15px;
+          line-height: 18px;
+          color: #bbc0ff;
+        }
+      }
+  
+      h2 {
+        font-weight: 300;
+        font-size: 40px;
+        line-height: 47px;
+        letter-spacing: 12px;
+        color: #ffffff;
+        @media only screen and (max-width: 768px) {
+          font-weight: 300;
+          font-size: 24px;
+          line-height: 28px;
+          letter-spacing: 3px;
+        }
+      }
+    }
+    .card--footer {
+      ul {
+        margin: 36px 32px;
+        @media only screen and (max-width: 768px) {
+          display: flex;
+          justify-content: space-around;
+        }
+        li {
+          list-style: none;
+          margin-block: 20px;
+          button {
+            all: unset;
+            cursor: pointer;
+            font-weight: 400;
+            font-size: 18px;
+            line-height: 21px;
+            text-decoration: none;
+            color: #7078c9;
+            &:hover,
+            &:focus {
+              color: #ffffff;
+            }
+          }
+        }
+      }
+    }
+  }
